@@ -23,6 +23,14 @@ code {
   margin-right: auto;
 }
 
+.hero-text {
+  flex: 5;
+}
+
+.hero-img {
+  flex: 7;
+}
+
 @media (min-width: 576px) {
   .wrapper {
     max-width: 540 px;
