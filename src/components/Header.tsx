@@ -8,13 +8,13 @@ const Header = () => {
         <div>
           <ul className="flex justify-between items-center gap-x-7">
             <li className="font-semibold">
-              <a href="">About</a>
+              <a href="#">About</a>
             </li>
             <li className="font-semibold">
-              <a href="">Projects</a>
+              <a href="#">Projects</a>
             </li>
             <li className="font-semibold text-primary">
-              <a href="">Sign In</a>
+              <a href="#">Sign In</a>
             </li>
             <li>
               <button className="font-semibold bg-primary text-white rounded-md py-5 px-8">
