@@ -31,6 +31,39 @@ code {
   flex: 7;
 }
 
+.our-impact::before {
+  content: "";
+  height: 674px;
+  width: 100vw;
+  position: absolute;
+  transform: translateY(-6.25%);
+  background: url("../public/images/waves-impact.svg") no-repeat;
+}
+
+.impact {
+  background: #fff;
+  flex: 1;
+  box-shadow: 0px 40px 120px -8px rgba(0, 0, 0, 0.12);
+  z-index: 50;
+}
+
+@media (max-width: 768px) {
+  .impact {
+    margin-bottom: 1.75rem;
+  }
+  .our-impact::before {
+    background: none;
+  }
+}
+
+@media (min-width: 1441px) {
+  .our-impact::before {
+    background-size: 100% 674px;
+    background-clip: border-box;
+    transform: translateY(-15%);
+  }
+}
+
 @media (min-width: 576px) {
   .wrapper {
     max-width: 540 px;

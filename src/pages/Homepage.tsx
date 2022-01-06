@@ -1,6 +1,8 @@
 import CompanyHelp from "../components/CompanyHelp";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
+import OurImpact from "../components/OurImpact";
+import OurProjects from "../components/OurProjects";
 
 const Homepage = () => {
   return (
@@ -8,6 +10,8 @@ const Homepage = () => {
       <Header />
       <HeroSection />
       <CompanyHelp />
+      <OurImpact />
+      <OurProjects />
     </>
   );
 };
