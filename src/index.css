@@ -47,6 +47,20 @@ code {
   z-index: 50;
 }
 
+.project-name::before {
+  content: url("../public/images/check.svg");
+  margin-right: 0.375rem;
+  vertical-align: top;
+}
+
+.btn-primary {
+  @apply text-white font-semibold py-4 bg-primary rounded-md w-full;
+}
+
+.box-shadow {
+  box-shadow: 0px 40px 120px -8px rgba(0, 0, 0, 0.12);
+}
+
 @media (max-width: 768px) {
   .impact {
     margin-bottom: 1.75rem;
