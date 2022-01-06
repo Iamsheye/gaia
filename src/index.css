@@ -6,6 +6,7 @@
 body {
   margin: 0;
   font-family: "BR Firma", sans-serif;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -33,7 +34,7 @@ code {
 
 .our-impact::before {
   content: "";
-  height: 674px;
+  height: 574px;
   width: 100vw;
   position: absolute;
   transform: translateY(-6.25%);

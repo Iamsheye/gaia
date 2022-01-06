@@ -8,7 +8,7 @@ const OurProjects = () => {
         <p className="text-dark text-center leading-[135%] max-w-[418px] mx-auto mb-10">
           Here are some of our projects
         </p>
-        <div className="md:flex gap-x-2 justify-center mb-10">
+        <div className="md:flex gap-x-3 justify-center mb-10">
           <div className="mb-4 flex-1 p-3 rounded-md bg-white box-shadow md:max-w-[275px] md:mb-0">
             <div className="relative mb-4">
               <img
@@ -138,6 +138,7 @@ const OurProjects = () => {
             <button className="btn-primary">Donate Now</button>
           </div>
         </div>
+        <div className="mb-10"></div>
       </div>
     </section>
   );
