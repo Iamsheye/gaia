@@ -1,4 +1,13 @@
+import { useState } from "react";
+import { Divide as Hamburger } from "hamburger-react";
+import useLockBody from "../hooks/useLockBody";
+
 const Header = () => {
+  const [menu, setMenu] = useState(false);
+  useLockBody(menu);
+
+  const showMenu = menu ? "translateX(0)" : "";
+
   return (
     <header>
       <nav className="wrapper flex justify-between items-center py-6">
@@ -6,7 +15,10 @@ const Header = () => {
           <img src="/images/gaia.svg" alt="Project Gaia Logo" />
         </div>
         <div>
-          <ul className="flex justify-between items-center gap-x-7">
+          <ul
+            className="nav flex justify-between items-center gap-x-7"
+            style={{ transform: showMenu }}
+          >
             <li className="font-semibold">
               <a href="#">About</a>
             </li>
@@ -22,6 +34,16 @@ const Header = () => {
               </button>
             </li>
           </ul>
+        </div>
+        <div className="md:hidden">
+          <Hamburger
+            rounded
+            toggled={menu}
+            toggle={setMenu}
+            distance="sm"
+            size={36}
+            color="#00995F"
+          />
         </div>
       </nav>
     </header>
