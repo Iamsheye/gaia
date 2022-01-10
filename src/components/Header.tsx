@@ -3,20 +3,40 @@ import { Divide as Hamburger } from "hamburger-react";
 import useLockBody from "../hooks/useLockBody";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+interface IHeader {
+  projects?: boolean;
+  search?: string;
+  setSearch?: any;
+}
+
+const Header = ({ projects, search, setSearch }: IHeader) => {
   const [menu, setMenu] = useState(false);
   useLockBody(menu);
 
   const showMenu = menu ? "translateX(0)" : "";
+  const nav = "wrapper flex justify-between items-center py-6";
 
   return (
     <header>
-      <nav className="wrapper flex justify-between items-center py-6">
+      <nav className={projects ? `${nav} nav-projects` : nav}>
         <div>
           <Link to="/">
             <img src="/images/gaia.svg" alt="Project Gaia Logo" />
           </Link>
         </div>
+        {projects && (
+          <div>
+            <input
+              type="text"
+              name="search"
+              autoComplete="off"
+              placeholder="Search for projects"
+              value={search}
+              onChange={(e) => setSearch(e.currentTarget.value)}
+              className="search rounded-md py-3 pl-6 bg-[#f7f7f7] w-[225px] lg:w-[402px]"
+            />
+          </div>
+        )}
         <div>
           <ul
             className="nav flex justify-between items-center gap-x-7"
