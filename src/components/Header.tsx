@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import useLockBody from "../hooks/useLockBody";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -12,7 +13,9 @@ const Header = () => {
     <header>
       <nav className="wrapper flex justify-between items-center py-6">
         <div>
-          <img src="/images/gaia.svg" alt="Project Gaia Logo" />
+          <Link to="/">
+            <img src="/images/gaia.svg" alt="Project Gaia Logo" />
+          </Link>
         </div>
         <div>
           <ul
@@ -23,7 +26,7 @@ const Header = () => {
               <a href="#">About</a>
             </li>
             <li className="font-semibold">
-              <a href="#">Projects</a>
+              <Link to="/projects">Projects</Link>
             </li>
             <li className="font-semibold text-primary">
               <a href="#">Sign In</a>

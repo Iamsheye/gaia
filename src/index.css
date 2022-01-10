@@ -62,7 +62,7 @@ code {
   box-shadow: 0px 40px 120px -8px rgba(0, 0, 0, 0.12);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .nav {
     position: fixed;
     top: 0;

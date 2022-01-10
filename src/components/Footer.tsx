@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="bg-white py-7 md:mt-12">
@@ -7,7 +9,9 @@ const Footer = () => {
             Privacy Policy
           </p>
           <div className="col-span-12 order-1 md:order-2 justify-self-center">
-            <img src="/images/gaia.svg" alt="Project Gaia Logo" />
+            <Link to="/">
+              <img src="/images/gaia.svg" alt="Project Gaia Logo" />
+            </Link>
           </div>
           <p className="leading-[135%] col-span-6 order-3 text-right">
             Terms and Conditions
