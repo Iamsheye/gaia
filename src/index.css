@@ -57,6 +57,10 @@ code {
   @apply text-white font-semibold py-4 bg-primary rounded-md w-full;
 }
 
+.search:focus-visible {
+  outline-color: #00995f;
+}
+
 .search::placeholder {
   color: #808080;
   line-height: 135%;
@@ -109,6 +113,21 @@ code {
   .nav-projects {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .nav-projects > div:first-child {
+    grid-column: span 9;
+  }
+
+  .nav-projects > div:nth-child(2) {
+    order: 2;
+    grid-column: span 12;
+    margin-top: 1rem;
+  }
+
+  .nav-projects > div:last-child {
+    grid-column: span 2;
+    justify-self: end;
   }
 }
 

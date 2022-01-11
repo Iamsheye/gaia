@@ -25,7 +25,12 @@ const Header = ({ projects, search, setSearch }: IHeader) => {
           </Link>
         </div>
         {projects && (
-          <div>
+          <div className="relative">
+            <img
+              src="/images/search.svg"
+              alt=""
+              className="absolute left-5 top-1/2 translate-y-[-50%]"
+            />
             <input
               type="text"
               name="search"
@@ -33,7 +38,7 @@ const Header = ({ projects, search, setSearch }: IHeader) => {
               placeholder="Search for projects"
               value={search}
               onChange={(e) => setSearch(e.currentTarget.value)}
-              className="search rounded-md py-3 pl-6 bg-[#f7f7f7] w-[225px] lg:w-[402px]"
+              className="search rounded-md py-3 pl-12 border-2 border-[#00995e60] bg-[#f7f7f7] w-full md:w-[225px] lg:w-[402px]"
             />
           </div>
         )}

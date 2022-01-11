@@ -70,21 +70,18 @@ const ProjectsPage = () => {
     if (search === "") {
       setProjects(projectsArr);
     } else {
-      setProjects((elem) =>
-        elem.filter((project) => project.title.toLowerCase().includes(search))
+      setProjects(() =>
+        projectsArr.filter((project) =>
+          project.title.toLowerCase().includes(search.toLowerCase())
+        )
       );
     }
-
-    console.log(
-      projects.filter((project) => project.title.toLowerCase().includes(search))
-    );
-    console.log(search);
   }, [search]);
 
   return (
     <>
       <Header setSearch={setSearch} search={search} projects />
-      <section className="py-16">
+      <section className="py-8">
         <div className="wrapper">
           <h2 className="text-dark text-center font-semibold text-[1.5rem] leading-[130%] md:text-[2rem] mb-2 max-w-[584px] mx-auto">
             Our Projects
