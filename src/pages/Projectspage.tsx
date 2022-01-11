@@ -1,7 +1,10 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { HashLoader } from "react-spinners";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Project from "../components/Project";
+import Project, { IProject } from "../components/Project";
 
 const projectsArr = [
   {
@@ -64,19 +67,40 @@ const projectsArr = [
 
 const ProjectsPage = () => {
   const [search, setSearch] = useState("");
-  const [projects, setProjects] = useState<typeof projectsArr>(projectsArr);
+  const [projectsAPI, setProjectsAPI] = useState<IProject[]>();
+  const [projects, setProjects] = useState<IProject[]>();
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (search === "") {
-      setProjects(projectsArr);
+      setProjects(projectsAPI);
     } else {
       setProjects(() =>
-        projectsArr.filter((project) =>
-          project.title.toLowerCase().includes(search.toLowerCase())
+        projectsAPI?.filter((project) =>
+          project.name.toLowerCase().includes(search.toLowerCase())
         )
       );
     }
   }, [search]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get("https://ga-ia.herokuapp.com/project");
+        setProjects(res.data.data);
+        setProjectsAPI(res.data.data);
+        setLoading(false);
+      } catch (e) {
+        toast.error("Error fetching projects", {
+          duration: 5000,
+          style: { backgroundColor: "#f44336dd", color: "#eeeeee" },
+        });
+      }
+    };
+    fetchProjects();
+  }, []);
 
   return (
     <>
@@ -89,17 +113,27 @@ const ProjectsPage = () => {
           <p className="text-dark text-center leading-[135%] max-w-[418px] mx-auto mb-10">
             Here are some of our projects
           </p>
-          <div className="md:grid gap-x-3 gap-y-8 grid-cols-12 place-items-center mb-10">
-            {projects.map((project) => (
-              <Project
-                image={project.image}
-                title={project.title}
-                org={project.org}
-                target={project.target}
-                progress={project.progress}
-              />
-            ))}
-          </div>
+          {!loading ? (
+            <div className="md:grid gap-x-3 gap-y-8 grid-cols-12 place-items-center mb-10">
+              {projects?.map((project) => (
+                <Project
+                  key={project._id}
+                  _id={project._id}
+                  name={project.name}
+                  image_url={project.image_url}
+                  project_url={project.project_url}
+                  paypal_url={project.paypal_url}
+                  // org={project.org}
+                  // target={project.target}
+                  // progress={project.progress}
+                />
+              ))}
+            </div>
+          ) : (
+            <section className="flex justify-center">
+              <HashLoader color="#00995f" />
+            </section>
+          )}
         </div>
       </section>
       <Footer />

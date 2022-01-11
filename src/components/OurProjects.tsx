@@ -1,37 +1,26 @@
-import { useState } from "react";
-import Project from "./Project";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Project, { IProject } from "./Project";
+import toast from "react-hot-toast";
 
 const OurProjects = () => {
-  const [projects, setProjects] = useState([
-    {
-      image: "antartica",
-      title: "Help Save the Ice Caps of Antarctica",
-      org: "NATGEO",
-      target: "41.3k",
-      progress: 80,
-    },
-    {
-      image: "congo",
-      title: "Help Save the Golden Lakes of Congo",
-      org: "NATGEO",
-      target: "33.3k",
-      progress: 40,
-    },
-    {
-      image: "china",
-      title: "Help Save the Grasslands of China",
-      org: "Project Gaia",
-      target: "120.3k",
-      progress: 90,
-    },
-    {
-      image: "argentina",
-      title: "Help Preserve the Lakes of Argentina",
-      org: "Project Gaia",
-      target: "90.3k",
-      progress: 50,
-    },
-  ]);
+  const [projects, setProjects] = useState<IProject[]>();
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await axios.get("https://ga-ia.herokuapp.com/project");
+        console.log(res.data.data);
+        setProjects(res.data.data.slice(0, 4));
+      } catch (e) {
+        toast.error("Error fetching projects", {
+          duration: 5000,
+          style: { backgroundColor: "#f44336dd", color: "#eeeeee" },
+        });
+      }
+    };
+    fetchProjects();
+  }, []);
 
   return (
     <section className="pt-16 bg-white">
@@ -43,13 +32,17 @@ const OurProjects = () => {
           Here are some of our projects
         </p>
         <div className="md:flex gap-x-3 justify-center mb-10">
-          {projects.map((project) => (
+          {projects?.map((project) => (
             <Project
-              image={project.image}
-              title={project.title}
-              org={project.org}
-              target={project.target}
-              progress={project.progress}
+              key={project._id}
+              _id={project._id}
+              name={project.name}
+              image_url={project.image_url}
+              project_url={project.project_url}
+              paypal_url={project.paypal_url}
+              // org={project.org}
+              // target={project.target}
+              // progress={project.progress}
             />
           ))}
         </div>
