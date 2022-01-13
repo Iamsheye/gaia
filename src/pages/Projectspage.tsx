@@ -120,6 +120,7 @@ const ProjectsPage = () => {
                   key={project._id}
                   _id={project._id}
                   name={project.name}
+                  project_headline={project.project_headline}
                   image_url={project.image_url}
                   project_url={project.project_url}
                   paypal_url={project.paypal_url}
