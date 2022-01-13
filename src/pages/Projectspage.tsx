@@ -124,9 +124,7 @@ const ProjectsPage = () => {
                   image_url={project.image_url}
                   project_url={project.project_url}
                   paypal_url={project.paypal_url}
-                  // org={project.org}
-                  // target={project.target}
-                  // progress={project.progress}
+                  paypal_value={project.paypal_value}
                 />
               ))}
             </div>

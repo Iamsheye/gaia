@@ -4,6 +4,7 @@ export interface IProject {
   image_url: string;
   project_url: string;
   paypal_url: string;
+  paypal_value: string;
   project_headline: string;
 }
 
@@ -12,6 +13,7 @@ const Project = ({
   image_url,
   name,
   paypal_url,
+  paypal_value,
   project_url,
   project_headline,
 }: IProject) => {
@@ -46,9 +48,11 @@ const Project = ({
           <p className="font-semibold text-black">{progress}%</p>
         </div>
       </div> */}
-      <a href={paypal_url}>
+      <form action={paypal_url} method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value={paypal_value} />
         <button className="btn-primary">Donate Now</button>
-      </a>
+      </form>
     </div>
   );
 };
