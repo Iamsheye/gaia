@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
     <section className="wrapper py-8">
@@ -13,9 +14,11 @@ const HeroSection = () => {
             transperency with your money
           </p>
           <div className="mx-auto w-fit items-center gap-x-8 mt-8 md:flex md:mx-0">
-            <button className="font-semibold bg-primary text-white rounded-md py-5 px-8 mb-10 md:mb-0 w-[300px] md:w-fit">
-              Donate Now
-            </button>
+            <Link to="/projects">
+              <button className="font-semibold bg-primary text-white rounded-md py-5 px-8 mb-10 md:mb-0 w-[300px] md:w-fit">
+                Donate Now
+              </button>
+            </Link>
             <div className="flex items-center gap-x-4 cursor-pointer w-fit mx-auto md:mx-0">
               <img src="/images/learn-more.svg" alt="Learn More SVG" />
               <p className="font-semibold text-dark leading-[22px]">
