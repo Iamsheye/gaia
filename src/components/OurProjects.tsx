@@ -10,7 +10,6 @@ const OurProjects = () => {
     const fetchProjects = async () => {
       try {
         const res = await axios.get("https://ga-ia.herokuapp.com/project");
-        console.log(res.data.data);
         setProjects(res.data.data.slice(0, 4));
       } catch (e) {
         toast.error("Error fetching projects", {
